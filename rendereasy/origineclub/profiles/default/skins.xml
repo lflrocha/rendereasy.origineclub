@@ -4,10 +4,10 @@
 
  <object name="rendereasy_origineclub_assets"
     meta_type="Filesystem Directory View"
-    directory="rendereasy.demo:skins/rendereasy_origineclub_assets"/>
+    directory="rendereasy.origineclub:skins/rendereasy_origineclub_assets"/>
  <object name="rendereasy_origineclub_templates"
     meta_type="Filesystem Directory View"
-    directory="rendereasy.demo:skins/rendereasy_origineclub_templates"/>
+    directory="rendereasy.origineclub:skins/rendereasy_origineclub_templates"/>
 
  <skin-path name="RenderEasy Origineclub" based-on="Sunburst Theme">
   <layer name="rendereasy_origineclub_assets"
