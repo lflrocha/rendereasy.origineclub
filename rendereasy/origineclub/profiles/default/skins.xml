@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="RenderEasy Origineclub">
+
+ <object name="rendereasy_origineclub_assets"
+    meta_type="Filesystem Directory View"
+    directory="rendereasy.demo:skins/rendereasy_origineclub_assets"/>
+ <object name="rendereasy_origineclub_templates"
+    meta_type="Filesystem Directory View"
+    directory="rendereasy.demo:skins/rendereasy_origineclub_templates"/>
+
+ <skin-path name="RenderEasy Origineclub" based-on="Sunburst Theme">
+  <layer name="rendereasy_origineclub_assets"
+     insert-after="custom"/>
+  <layer name="rendereasy_origineclub_templates"
+     insert-after="rendereasy_origineclub_assets"/>
+ </skin-path>
+
+</object>
