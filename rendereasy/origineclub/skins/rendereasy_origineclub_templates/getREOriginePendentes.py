@@ -7,7 +7,7 @@
 ##parameters=
 ##title=
 ##
-solicitacoes = context.portal_catalog.searchResults(meta_type=['Twitter', 'Texto', 'Santinho', 'Album'], sort_on="created")
+solicitacoes = context.portal_catalog.searchResults(meta_type=['Vinheta', 'PerguntaResposta', 'Coluna'], sort_on="created")
 
 aux = []
 for s in solicitacoes:

@@ -14,6 +14,10 @@ from rendereasy.origineclub import origineclubMessageFactory as _
 from rendereasy.origineclub.interfaces import IPerguntaResposta
 from rendereasy.origineclub.config import PROJECTNAME
 
+from DateTime.DateTime import *
+from Products.CMFPlone.utils import getToolByName
+from string import join
+
 PerguntaRespostaSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -118,7 +122,7 @@ class PerguntaResposta(base.ATCTContent):
     creditoresposta = atapi.ATFieldProperty('creditoresposta')
     videoresposta = atapi.ATFieldProperty('videoresposta')
 
-    def getAutomator(self):
+    def getDados(self):
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
 
         aux = 'var ext_cliente = "origine";\n'

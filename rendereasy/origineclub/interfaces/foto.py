@@ -11,7 +11,7 @@ class IFoto(Interface):
 
     # -*- schema definition goes here -*-
     arquivo = schema.Bytes(
-        title=_(u"Foto"),
+        title=_(u"Arquivo"),
         required=True,
         description=_(u"Field description"),
     )

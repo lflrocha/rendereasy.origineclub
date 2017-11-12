@@ -13,6 +13,6 @@ fim = DateTime(data.strftime("%d/%m/%Y 23:59:59"),datefmt='international')
 
 folder_path = '/'.join(context.getPhysicalPath())
 
-solicitacoes = context.portal_catalog.searchResults(meta_type=['Texto', 'Santinho', 'Twitter'], sort_on="created", sort_order="reverse", path={'query': folder_path}, created={"query": [data,fim], "range": "min:max"})
+solicitacoes = context.portal_catalog.searchResults(meta_type=['Vinheta', 'PerguntaResposta', 'Coluna'], sort_on="created", sort_order="reverse", path={'query': folder_path}, created={"query": [data,fim], "range": "min:max"})
 
 return solicitacoes

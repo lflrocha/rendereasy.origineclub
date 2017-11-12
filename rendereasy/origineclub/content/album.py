@@ -9,9 +9,15 @@ from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
 # -*- Message Factory Imported Here -*-
+from rendereasy.origineclub import origineclubMessageFactory as _
 
 from rendereasy.origineclub.interfaces import IAlbum
 from rendereasy.origineclub.config import PROJECTNAME
+
+from DateTime.DateTime import *
+from Products.CMFPlone.utils import getToolByName
+from string import join
+
 
 AlbumSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
@@ -63,7 +69,7 @@ class Album(folder.ATFolder):
         fotos = pc.searchResults(meta_type='Foto',path=path)
         return fotos
 
-    def getAutomator(self):
+    def getDados(self):
         fotos = self.listFolderContents()
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
 

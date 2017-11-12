@@ -14,6 +14,10 @@ from rendereasy.origineclub import origineclubMessageFactory as _
 from rendereasy.origineclub.interfaces import IColuna
 from rendereasy.origineclub.config import PROJECTNAME
 
+from DateTime.DateTime import *
+from Products.CMFPlone.utils import getToolByName
+from string import join
+
 ColunaSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -77,18 +81,33 @@ class Coluna(base.ATCTContent):
 
     foto = atapi.ATFieldProperty('foto')
 
-    def getAutomator(self):
+    def getDados(self):
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
+        filename = self.getFilename('foto')
+
 
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
-        aux = aux + 'var ext_telas = [{\n'
+        aux = aux + 'var ext_telas = [\n'
+
+        aux = aux + '{\n'
+        aux = aux + 'name: "vinheta",\n'
+        aux = aux + 'texto: "Colunistas Origine",\n'
+        aux = aux + '},\n'
+        aux = aux + '{\n'
         aux = aux + 'name: "coluna",\n'
-        aux = aux + 'tempo: 15,\n'
+        aux = aux + 'tempo: 10,\n'
         aux = aux + 'titulo: "%s",\n' % self.Title()
         aux = aux + 'autor: "%s",\n' % self.getAutor()
-        aux = aux + 'foto: "%s",\n' % self.getFoto()
-        aux = aux + '}]; \n'
+        aux = aux + 'foto: "%s",\n' % filename
+        aux = aux + '},\n'
+        aux = aux + '{\n'
+        aux = aux + 'name: "assinatura",\n'
+        aux = aux + 'texto: "originegroup.com.br"\n'
+        aux = aux + '}\n'        
+        aux = aux + '];\n'
+        aux = aux + 'var arquivos = [("%s/at_download/foto/", "%s")];' % (self.absolute_url(), filename)
+
 
         return aux
 

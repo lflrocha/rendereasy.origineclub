@@ -18,15 +18,15 @@ FotoSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
-    atapi.ImageField(
+    atapi.FileField(
         'arquivo',
         storage=atapi.AnnotationStorage(),
-        widget=atapi.ImageWidget(
-            label=_(u"Foto"),
+        widget=atapi.FileWidget(
+            label=_(u"Arquivo"),
+            description=_(u"Selcione um arquivo de imagem ou video."),
         ),
         required=True,
         validators=('isNonEmptyFile'),
-        sizes = {'foto' : (1248, 702)}
     ),
 
 

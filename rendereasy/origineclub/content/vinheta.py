@@ -14,6 +14,10 @@ from rendereasy.origineclub import origineclubMessageFactory as _
 from rendereasy.origineclub.interfaces import IVinheta
 from rendereasy.origineclub.config import PROJECTNAME
 
+from DateTime.DateTime import *
+from Products.CMFPlone.utils import getToolByName
+from string import join
+
 VinhetaSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -65,17 +69,36 @@ class Vinheta(base.ATCTContent):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     video = atapi.ATFieldProperty('video')
 
-    def getAutomator(self):
+    def getDados(self):
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
+        filename = self.getFilename('video')
 
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
         aux = aux + 'var ext_telas = [{\n'
+
+        aux = aux + '{\n'
         aux = aux + 'name: "vinheta",\n'
-        aux = aux + 'texto: "%s",\n' % self.Title()
-        aux = aux + 'video: "%s",\n' % self.getVideo()
-        aux = aux + '}]; \n'
+        aux = aux + 'texto: "%s"\n' % self.Title()
+        aux = aux + '},\n'
+        aux = aux + '{\n'
+        aux = aux + 'name: "video",\n'
+        aux = aux + 'video: "%s",\n' % filename
+        aux = aux + '},\n'
+        aux = aux + '{\n'
+        aux = aux + 'name: "assinatura",\n'
+        aux = aux + 'texto: "originegroup.com.br"\n'
+        aux = aux + '}\n'
+
+        aux = aux + ']; \n'
+        aux = aux + 'var arquivos = [("%s/at_download/video/", "%s")];' % (self.absolute_url(), filename)
 
         return aux
+
+
+
+
+
+
 
 atapi.registerType(Vinheta, PROJECTNAME)

@@ -1,74 +1,21 @@
-a:link, a:visited, #content a:link, #content a:visited, dl.portlet a:link, dl.portlet a:visited {
-    color: #00007f;
-}
-
-#portal-globalnav .selected a, #portal-globalnav a:hover {
-    background-color: #175f80;
-}
-
-#contentActionMenus,
-dl.actionMenu.activated dd,
-#content-views,
-#edit-bar {
-	background-color: #005478;
-	border-color: #005478;
-}
-
-#portal-personaltools-wrapper .actionMenu a {
-	background-color: #e3e3e3 !important;
-}
-
-dl.actionMenu a {
-	background-color: #005478 !important;
-}
-
-#contentActionMenus dl.actionMenu.activated dd {
-    border-bottom: 0.5em solid #005478;
-}
-#contentActionMenus dl.actionMenu a, #contentActionMenus dl.actionMenu.activated dd {
-    background-color: #005478;
-}
-
-
-#portal-globalnav {
-    background: #25a5d9;
-}
-
-#portal-globalnav .selected a:hover {
-    background: #25a5d9;
-    color: #fff;
-}
-
-#portal-globalnav li a {
-    background: #25a5d9;
-    padding: 0.9em 1em 1em;
-    color: #fff;
-}
-
-#portal-globalnav {
-    font-size: 100%;
-}
-
-
-
 
 div.botaoPortlet {
-    background: none repeat scroll 0 0 #175f80;
+    background: none repeat scroll 0 0 #e29400;
     border-radius: 0em;
     font-size: 100%;
     margin: 0.5em auto 1em;
     padding: 0.5em;
     text-align: center;
-  color: white !important;
+    color: #fff !important;
 }
 
 div.botaoPortlet:hover {
-    background-color: #25A5D9;
-  color: white !important;
+    background-color: #421213;
+    color: #fff !important;
 }
 
 div.botaoPortlet a{
-  color: white !important;
+  color: #fff !important;
   display: block;
   padding: 0.3em 0.5em;
 }
@@ -79,7 +26,7 @@ div.botaoPortlet a:visited{
 }
 
 .titulo-portlet {
-    color: #26A7DF;
+    color: #421213;
     font-size: 30px;
     font-weight: bold;
     margin-top: 10px;
@@ -88,10 +35,51 @@ div.botaoPortlet a:visited{
 }
 
 .titulo {
-    color: #26A7DF;
+    color: #421213;
     font-size: 30px;
     font-weight: bold;
     margin-top: 19px;
     text-align: center;
     text-transform: uppercase;
+}
+
+
+
+#portal-globalnav {
+    clear: both;
+    font-size: 80%;
+    background: #421213;
+    margin: 0 0 1em 0;
+}
+
+#portal-globalnav .selected a:hover {
+    background: #ddd;
+    color: #FCA61B;
+}
+#portal-globalnav .selected a, #portal-globalnav a:hover {
+    background: #FCA61B;
+    color: White;
+}
+
+#portal-globalnav li a {
+    background: #421213;
+    color: #eee;
+}
+
+#portal-footer {
+font-size: 75%;
+    background: #421213;
+    margin: 1em 0;
+    line-height: 0.5em;
+    padding: 0;
+    height: 2px;
+}
+
+
+#content a {
+    color: #421213 !important;
+}
+
+#content a:hover {
+    color: #FCA61B !important;
 }
