@@ -77,7 +77,7 @@ class Album(folder.ATFolder):
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
         aux = aux + 'var ext_telas = [\n'
         for foto in fotos:
-            arquivo = foto.getId()
+            arquivo = foto.getFilename('arquivo')
             legenda = foto.getLegenda()
             aux = aux + '{\n'
             aux = aux + 'name: "fotos",\n'
@@ -88,14 +88,13 @@ class Album(folder.ATFolder):
             aux = aux + '}, \n'
         aux = aux[:-3] + '\n]\n'
 
-        aux = aux + 'var arquivos = [
+        aux = aux + 'var arquivos = ['
         for foto in fotos:
-            obj = foto.getObject()
-            filename = obj.getFilename('arquivo')
+            filename = foto.getFilename('arquivo')
             endereco = self.absolute_url() + '/' + foto.getId()
             aux = aux + '("%s/at_download/arquivo/", "%s"), ' % (endereco, filename)
 
-        aux = aux + '];\n'
+        aux = aux[:-2] + '];'
         return aux
 
 
