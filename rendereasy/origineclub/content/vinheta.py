@@ -84,7 +84,7 @@ class Vinheta(base.ATCTContent):
         aux = aux + '{\n'
         aux = aux + 'name: "fotos",\n'
         aux = aux + 'tempo: 10,\n'
-        aux = aux + 'legenda: "",\n' % legenda
+        aux = aux + 'legenda: "",\n'
         aux = aux + 'foto: "%s",\n' % filename
         aux = aux + 'bg: "blur"\n'
         aux = aux + '},\n'
