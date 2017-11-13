@@ -76,6 +76,10 @@ class Album(folder.ATFolder):
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
         aux = aux + 'var ext_telas = [\n'
+        aux = aux + '{\n'
+        aux = aux + 'name: "vinheta",\n'
+        aux = aux + 'texto: "%s"\n' % self.Title()
+        aux = aux + '},\n'
         for foto in fotos:
             arquivo = foto.getFilename('arquivo')
             legenda = foto.getLegenda()
