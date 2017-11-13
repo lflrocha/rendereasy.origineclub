@@ -90,6 +90,11 @@ class Album(folder.ATFolder):
             aux = aux + 'foto: "%s",\n' % arquivo
             aux = aux + 'bg: "blur"\n'
             aux = aux + '}, \n'
+
+        aux = aux + '{\n'
+        aux = aux + 'name: "assinatura",\n'
+        aux = aux + 'texto: "originegroup.com.br"\n'
+        aux = aux + '}\n'
         aux = aux[:-3] + '\n]\n'
 
         aux = aux + 'var arquivos = ['
