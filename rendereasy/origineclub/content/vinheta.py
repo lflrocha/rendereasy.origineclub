@@ -75,15 +75,18 @@ class Vinheta(base.ATCTContent):
 
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
-        aux = aux + 'var ext_telas = [{\n'
+        aux = aux + 'var ext_telas = [\n'
 
         aux = aux + '{\n'
         aux = aux + 'name: "vinheta",\n'
         aux = aux + 'texto: "%s"\n' % self.Title()
         aux = aux + '},\n'
         aux = aux + '{\n'
-        aux = aux + 'name: "video",\n'
-        aux = aux + 'video: "%s",\n' % filename
+        aux = aux + 'name: "fotos",\n'
+        aux = aux + 'tempo: 0,\n'
+        aux = aux + 'legenda: "",\n' % legenda
+        aux = aux + 'foto: "%s",\n' % filename
+        aux = aux + 'bg: "blur"\n'
         aux = aux + '},\n'
         aux = aux + '{\n'
         aux = aux + 'name: "assinatura",\n'
