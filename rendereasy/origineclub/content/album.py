@@ -88,6 +88,14 @@ class Album(folder.ATFolder):
             aux = aux + '}, \n'
         aux = aux[:-3] + '\n]\n'
 
+        aux = aux + 'var arquivos = [
+        for foto in fotos:
+            obj = foto.getObject()
+            filename = obj.getFilename('arquivo')
+            endereco = self.absolute_url() + '/' + foto.getId()
+            aux = aux + '("%s/at_download/arquivo/", "%s"), ' % (endereco, filename)
+
+        aux = aux + '];\n'
         return aux
 
 
