@@ -18,6 +18,18 @@ FotoSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
+    atapi.IntegerField(
+        'tempo',
+        storage=atapi.AnnotationStorage(),
+        default=5,
+        widget=atapi.IntegerWidget(
+            label=_(u"Tempo"),
+        ),
+        required=True,
+        validators=('isInt'),
+    ),
+
+
     atapi.FileField(
         'arquivo',
         storage=atapi.AnnotationStorage(),
@@ -76,6 +88,8 @@ class Foto(base.ATCTContent):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
+    tempo = atapi.ATFieldProperty('tempo')
+
     arquivo = atapi.ATFieldProperty('arquivo')
 
     legenda = atapi.ATFieldProperty('legenda')

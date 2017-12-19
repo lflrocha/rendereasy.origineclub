@@ -100,9 +100,10 @@ class Album(folder.ATFolder):
         for foto in fotos:
             arquivo = foto.getFilename('arquivo')
             legenda = foto.getLegenda()
+            tempo = foto.getTempo()
             aux = aux + '{\n'
             aux = aux + 'name: "fotos",\n'
-            aux = aux + 'tempo: 10,\n'
+            aux = aux + 'tempo: %s,\n' % tempo
             aux = aux + 'legenda: "%s",\n' % legenda
             aux = aux + 'foto: "%s",\n' % arquivo
             aux = aux + 'bg: "blur"\n'
