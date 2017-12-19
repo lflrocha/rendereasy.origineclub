@@ -23,6 +23,18 @@ AlbumSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
+    atapi.FileField(
+        'trilha',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.FileWidget(
+            label=_(u"Trilha"),
+            description=_(u"Field description"),
+        ),
+        required=True,
+        validators=('isNonEmptyFile'),
+    ),
+
+
 ))
 
 # Set storage on fields copied from ATFolderSchema, making sure
@@ -63,6 +75,8 @@ class Album(folder.ATFolder):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
+    trilha = atapi.ATFieldProperty('trilha')
+
     def getFotos(self):
         pc = getToolByName(self, 'portal_catalog')
         path = join(self.getPhysicalPath(), '/')
@@ -72,9 +86,12 @@ class Album(folder.ATFolder):
     def getDados(self):
         fotos = self.listFolderContents()
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
+        trilha = foto.getFilename('trilha')
+
 
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
+        aux = aux + 'var ext_trilhas = "%s";\n' % trilha
         aux = aux + 'var ext_telas = [\n'
         aux = aux + '{\n'
         aux = aux + 'name: "vinheta",\n'
@@ -96,13 +113,12 @@ class Album(folder.ATFolder):
         aux = aux + 'texto: "originegroup.com.br"\n'
         aux = aux + '}\n'
         aux = aux + ']\n'
-
         aux = aux + 'var arquivos = ['
+        aux = aux + '("%s/at_download/trilha/", "%s"), ' % (self.absolute_url(), trilha)
         for foto in fotos:
             filename = foto.getFilename('arquivo')
             endereco = self.absolute_url() + '/' + foto.getId()
             aux = aux + '("%s/at_download/arquivo/", "%s"), ' % (endereco, filename)
-
         aux = aux[:-2] + '];'
         return aux
 
