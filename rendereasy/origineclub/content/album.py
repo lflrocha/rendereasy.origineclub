@@ -108,11 +108,11 @@ class Album(folder.ATFolder):
                 aux = aux + 'bg: "blur"\n'
                 aux = aux + '}, \n'
             elif item.meta_type == 'Texto':
-                texto = item.getTexto()
+                text = item.getText()
                 tempo = item.getTempo()
                 aux = aux + '{\n'
                 aux = aux + 'name: "texto",\n'
-                aux = aux + 'texto: "%s",\n' % texto
+                aux = aux + 'texto: "%s",\n' % text
                 aux = aux + 'tempo: %s,\n' % tempo
                 aux = aux + '}, \n'
 
