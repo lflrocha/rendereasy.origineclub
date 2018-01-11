@@ -136,9 +136,9 @@ class Evento(base.ATCTContent):
         aux = aux + 'tempo: %s,\n' % self.getTempo()
         aux = aux + 'titulo: "%s",\n' % self.Title()
         aux = aux + 'foto: "%s",\n' % filename
-        aux = aux + 'data: %s,\n' % self.getData()
-        aux = aux + 'hora: %s,\n' % self.getHora()
-        aux = aux + 'local: %s,\n' % self.getLocal()
+        aux = aux + 'data: "%s",\n' % self.getData()
+        aux = aux + 'hora: "%s",\n' % self.getHora()
+        aux = aux + 'local: "%s",\n' % self.getLocal()
         aux = aux + '},\n'
         aux = aux + '{\n'
         aux = aux + 'name: "assinatura",\n'
