@@ -45,7 +45,7 @@
                                 <tr>
                                     <th><span tal:replace="solicitacao/review_state" /></th>
                                     <th><span tal:replace="solicitacao/Title" /></th>
-                                    <th><a tal:attributes="href python:solicitacao.getURL()+'/createObject?type_name=Foto'"><img src="icone_mais.png" alt="Adicionar foto"></a></th>
+                                    <th><a tal:attributes="href python:solicitacao.getURL()+'/createObject?type_name=Foto'"><img src="icone_mais.png" alt="Adicionar foto"></a><a tal:attributes="href python:solicitacao.getURL()+'/createObject?type_name=Texto'"><img src="icone_mais.png" alt="Adicionar texto"></a></th>
                                     <th><a tal:attributes="href python:solicitacao.getURL()+'/content_status_modify?workflow_action=retornar'"><img src="icone_solicitar.png" alt="Solicitar"></a></th>
                                     <th><a tal:attributes="href python:solicitacao.getURL()+'/edit'"><img src="icone_editar.png" alt="Editar"></a></th>
                                     <th><a tal:attributes="href python:solicitacao.getURL()+'/delete_confirmation'"><img src="icone_excluir.png" alt="Excluir"></a></th>

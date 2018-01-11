@@ -13,6 +13,10 @@ from rendereasy.origineclub import origineclubMessageFactory as _
 from rendereasy.origineclub.interfaces import IEvento
 from rendereasy.origineclub.config import PROJECTNAME
 
+from DateTime.DateTime import *
+from Products.CMFPlone.utils import getToolByName
+from string import join
+
 EventoSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
