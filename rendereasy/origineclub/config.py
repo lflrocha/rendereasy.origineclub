@@ -5,6 +5,7 @@ PROJECTNAME = 'rendereasy.origineclub'
 
 ADD_PERMISSIONS = {
     # -*- extra stuff goes here -*-
+    'Texto': 'rendereasy.origineclub: Add Texto',
     'Evento': 'rendereasy.origineclub: Add Evento',
     'Vinheta': 'rendereasy.origineclub: Add Vinheta',
     'PerguntaResposta': 'rendereasy.origineclub: Add PerguntaResposta',

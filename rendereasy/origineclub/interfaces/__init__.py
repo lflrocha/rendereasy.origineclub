@@ -1,4 +1,5 @@
 # -*- extra stuff goes here -*-
+from texto import ITexto
 from evento import IEvento
 from vinheta import IVinheta
 from perguntaresposta import IPerguntaResposta
