@@ -18,7 +18,7 @@ TextoSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     # -*- Your Archetypes field definitions here ... -*-
 
     atapi.TextField(
-        'text',
+        'texto',
         storage=atapi.AnnotationStorage(),
         widget=atapi.TextAreaWidget(
             label=_(u"Texto"),
@@ -73,7 +73,7 @@ class Texto(base.ATCTContent):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
-    texto = atapi.ATFieldProperty('text')
+    texto = atapi.ATFieldProperty('texto')
 
     tempo = atapi.ATFieldProperty('tempo')
 

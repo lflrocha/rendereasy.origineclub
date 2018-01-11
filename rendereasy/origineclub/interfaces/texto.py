@@ -10,7 +10,7 @@ class ITexto(Interface):
     """Description of the Example Type"""
 
     # -*- schema definition goes here -*-
-    text = schema.Text(
+    texto = schema.Text(
         title=_(u"Texto"),
         required=True,
         description=_(u"Field description"),
