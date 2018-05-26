@@ -6,6 +6,18 @@
   <!-- configure your content components here -->
   
   <!-- -*- extra stuff goes here -*- -->
+  <class class=".texto.Texto">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.ITexto"
+        />
+  </class>
+  <class class=".evento.Evento">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IEvento"
+        />
+  </class>
   <class class=".vinheta.Vinheta">
     <require
         permission="zope2.View"

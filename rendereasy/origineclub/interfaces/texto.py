@@ -6,13 +6,19 @@ from rendereasy.origineclub import origineclubMessageFactory as _
 
 
 
-class IAlbum(Interface):
+class ITexto(Interface):
     """Description of the Example Type"""
 
     # -*- schema definition goes here -*-
-    trilha = schema.Bytes(
-        title=_(u"Trilha"),
+    texto = schema.Text(
+        title=_(u"Texto"),
         required=True,
+        description=_(u"Field description"),
+    )
+#
+    tempo = schema.Int(
+        title=_(u"Tempo"),
+        required=False,
         description=_(u"Field description"),
     )
 #

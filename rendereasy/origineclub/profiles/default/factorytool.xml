@@ -10,6 +10,8 @@
 <object name="portal_factory" meta_type="Plone Factory Tool">
   <factorytypes>
     <!-- -*- extra stuff goes here -*- -->
+    <type portal_type="Texto" />
+    <type portal_type="Evento" />
     <type portal_type="Vinheta" />
     <type portal_type="PerguntaResposta" />
     <type portal_type="Foto" />

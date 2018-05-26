@@ -23,6 +23,17 @@ AlbumSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
+    atapi.FileField(
+        'trilha',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.FileWidget(
+            label=_(u"Trilha"),
+        ),
+        required=True,
+        validators=('isNonEmptyFile'),
+    ),
+
+
 ))
 
 # Set storage on fields copied from ATFolderSchema, making sure
@@ -63,46 +74,60 @@ class Album(folder.ATFolder):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
+    trilha = atapi.ATFieldProperty('trilha')
+
     def getFotos(self):
         pc = getToolByName(self, 'portal_catalog')
         path = join(self.getPhysicalPath(), '/')
-        fotos = pc.searchResults(meta_type='Foto',path=path)
+        fotos = pc.searchResults(meta_type=['Foto','Texto'],path=path)
         return fotos
 
     def getDados(self):
-        fotos = self.listFolderContents()
+        itens = self.listFolderContents()
         novoProjeto =  DateTime().strftime("%Y%m%d%H%M%S") + '_' + self.meta_type
+        trilha = self.getFilename('trilha')
 
         aux = 'var ext_cliente = "origine";\n'
         aux = aux + 'var ext_novoProjeto = "%s";\n' % novoProjeto
+        aux = aux + 'var ext_trilhas = "%s";\n' % trilha
         aux = aux + 'var ext_telas = [\n'
         aux = aux + '{\n'
         aux = aux + 'name: "vinheta",\n'
         aux = aux + 'texto: "%s"\n' % self.Title()
         aux = aux + '},\n'
-        for foto in fotos:
-            arquivo = foto.getFilename('arquivo')
-            legenda = foto.getLegenda()
-            aux = aux + '{\n'
-            aux = aux + 'name: "fotos",\n'
-            aux = aux + 'tempo: 10,\n'
-            aux = aux + 'legenda: "%s",\n' % legenda
-            aux = aux + 'foto: "%s",\n' % arquivo
-            aux = aux + 'bg: "blur"\n'
-            aux = aux + '}, \n'
+        for item in itens:
+            if item.meta_type == 'Foto':
+                arquivo = item.getFilename('arquivo')
+                legenda = item.getLegenda()
+                tempo = item.getTempo()
+                aux = aux + '{\n'
+                aux = aux + 'name: "fotos",\n'
+                aux = aux + 'tempo: %s,\n' % tempo
+                aux = aux + 'legenda: "%s",\n' % legenda
+                aux = aux + 'foto: "%s",\n' % arquivo
+                aux = aux + 'bg: "blur"\n'
+                aux = aux + '}, \n'
+            elif item.meta_type == 'Texto':
+                texto = item.getTexto()
+                tempo = item.getTempo()
+                aux = aux + '{\n'
+                aux = aux + 'name: "texto",\n'
+                aux = aux + 'texto: "%s",\n' % texto
+                aux = aux + 'tempo: %s,\n' % tempo
+                aux = aux + '}, \n'
 
         aux = aux + '{\n'
         aux = aux + 'name: "assinatura",\n'
         aux = aux + 'texto: "originegroup.com.br"\n'
         aux = aux + '}\n'
-        aux = aux + ']\n'
-
+        aux = aux + '];\n'
         aux = aux + 'var arquivos = ['
-        for foto in fotos:
-            filename = foto.getFilename('arquivo')
-            endereco = self.absolute_url() + '/' + foto.getId()
-            aux = aux + '("%s/at_download/arquivo/", "%s"), ' % (endereco, filename)
-
+        aux = aux + '("%s/at_download/trilha/", "%s"), ' % (self.absolute_url(), trilha)
+        for item in itens:
+            if item.meta_type == 'Foto':
+                filename = foto.getFilename('arquivo')
+                endereco = self.absolute_url() + '/' + foto.getId()
+                aux = aux + '("%s/at_download/arquivo/", "%s"), ' % (endereco, filename)
         aux = aux[:-2] + '];'
         return aux
 
